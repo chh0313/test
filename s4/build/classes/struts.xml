@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<!-- package:导包 -->
+	<package name="p1" extends="struts-default">
+	<interceptors>
+		<interceptor name="mylog" class="com.mashen.action.MyLogInterceptor"></interceptor>
+	</interceptors>
+		<action name="hello" class="com.mashen.action.HelloAction" method="sayHello">
+			<result name="success">/success.jsp</result>
+			<interceptor-ref name="mylog"></interceptor-ref>
+		</action>
+		
+		<!-- 动态参数封装的第一种配置 -->
+		<action name="demo1" class="com.mashen.action.Demo1" method="Demo01">
+			<result name="success">/success.jsp</result>
+		</action>
+		
+		<!-- 动态参数封装的第二种配置 -->
+		<action name="demo2" class="com.mashen.action.Demo2" method="demo02">
+			<result name="success">/success.jsp</result>
+			<interceptor-ref name="timer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="debal" class="com.mashen.action.DebleDemo">
+			<result>/success.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 文件上传 -->
+	<package name="download" extends="struts-default">
+		<action name="uploadFile" class="com.mashen.action.UploadAction">
+			<result name="success">/success.jsp</result>
+		</action>
+	</package>
+</struts>
